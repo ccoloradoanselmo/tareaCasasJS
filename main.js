@@ -1,8 +1,5 @@
-import { Casa } from "/clases/Casa.js";
+import { Casa } from "./clases/Casa.js";
 
-// Orden del constructor: region, emblema, lema, personajes, caracteristicas
-
-// 1. Stark - Invernalia (Winterfell)
 const casaStark = new Casa(
     "El Norte",
     "Lobo huargo gris sobre fondo blanco",
@@ -11,7 +8,6 @@ const casaStark = new Casa(
     "Honor, lealtad y tradición"
 );
 
-// 2. Targaryen - Rocadragón (Dragonstone)
 const casaTargaryen = new Casa(
     "Tierras de la Corona",
     "Dragón rojo de tres cabezas sobre fondo negro",
@@ -20,7 +16,6 @@ const casaTargaryen = new Casa(
     "Antigua dinastía real vinculada a los dragones"
 );
 
-// 3. Baratheon - Bastión de Tormentas (Storm's End)
 const casaBaratheon = new Casa(
     "Tierras de la Tormenta",
     "Ciervo negro coronado sobre fondo dorado",
@@ -29,7 +24,6 @@ const casaBaratheon = new Casa(
     "Fuerza, orgullo y espíritu guerrero"
 );
 
-// 4. Arryn - Nido de Águilas (The Eyrie)
 const casaArryn = new Casa(
     "El Valle de Arryn",
     "Halcón y luna blanca sobre fondo azul",
@@ -38,7 +32,6 @@ const casaArryn = new Casa(
     "Una fortaleza situada en lo alto de las montañas"
 );
 
-// 5. Lannister - Roca Casterly (Casterly Rock)
 const casaLannister = new Casa(
     "Occidente",
     "León dorado sobre fondo carmesí",
@@ -47,7 +40,6 @@ const casaLannister = new Casa(
     "Riqueza, poder político y ambición"
 );
 
-// 6. Greyjoy - Pyke
 const casaGreyjoy = new Casa(
     "Islas del Hierro",
     "Kraken dorado sobre fondo negro",
@@ -56,7 +48,6 @@ const casaGreyjoy = new Casa(
     "Navegación, independencia y tradición marinera"
 );
 
-// 7. Tully - Aguasdulces (Riverrun)
 const casaTully = new Casa(
     "Tierras de los Ríos",
     "Trucha plateada sobre fondo azul y rojo",
@@ -65,7 +56,6 @@ const casaTully = new Casa(
     "Lealtad familiar y alianzas políticas"
 );
 
-// 8. Tyrell - Altojardín (Highgarden)
 const casaTyrell = new Casa(
     "El Dominio",
     "Rosa dorada sobre fondo verde",
@@ -74,7 +64,6 @@ const casaTyrell = new Casa(
     "Riqueza agrícola, diplomacia e influencia"
 );
 
-// 9. Bolton - Fuerte Terror (The Dreadfort)
 const casaBolton = new Casa(
     "El Norte",
     "Hombre desollado sobre fondo rojo",
@@ -83,7 +72,6 @@ const casaBolton = new Casa(
     "Casa norteña conocida por su crueldad y rivalidad histórica con los Stark"
 );
 
-// 10. Martell - Lanza del Sol (Sunspear)
 const casaMartell = new Casa(
     "Dorne",
     "Sol rojo atravesado por una lanza sobre fondo naranja",
@@ -92,7 +80,7 @@ const casaMartell = new Casa(
     "Independencia, orgullo y resistencia"
 );
 
-// ===== Cajas =====
+// Referencias a las zonas clicables del mapa
 const cajaStark = document.querySelector("#cajaStark");
 const cajaTargaryen = document.querySelector("#cajaTargaryen");
 const cajaBaratheon = document.querySelector("#cajaBaratheon");
@@ -104,12 +92,11 @@ const cajaTyrell = document.querySelector("#cajaTyrell");
 const cajaBolton = document.querySelector("#cajaBolton");
 const cajaMartell = document.querySelector("#cajaMartell");
 
-// ===== Tarjetas =====
 const mapa = document.querySelector("#mapa");
 const tarjetaHover = document.querySelector("#tarjetaHover");
 const tarjetaClick = document.querySelector("#tarjetaClick");
 
-// Mapeo de casas a sus archivos de imagen
+// Qué imagen de emblema corresponde a cada región
 const imagenesCasas = {
     "El Norte": "Stark",
     "Tierras de la Corona": "Targaryen",
@@ -142,16 +129,16 @@ function mostrarTarjeta(tarjeta, caja, casa) {
             </div>
         </div>
     `;
-    tarjeta.style.display = "block"; // primero se muestra para poder medir su ancho y alto
+    tarjeta.style.display = "block";
 
-    // A la derecha de la caja; si se sale del mapa, a la izquierda
+    // Horizontal: a la derecha de la caja, o a la izquierda si no cabe
     let left = caja.offsetLeft + caja.offsetWidth + 10;
     if (left + tarjeta.offsetWidth > mapa.offsetWidth) {
         left = caja.offsetLeft - tarjeta.offsetWidth - 10;
     }
     tarjeta.style.left = left + "px";
 
-    // Posición vertical: empieza en la caja, pero clampa para no salirse del main
+    // Vertical: al nivel de la caja, pero sin salirse del mapa
     let top = caja.offsetTop;
     const maxTop = mapa.offsetHeight - tarjeta.offsetHeight;
     if (top > maxTop) top = maxTop;
@@ -159,7 +146,7 @@ function mostrarTarjeta(tarjeta, caja, casa) {
     tarjeta.style.top = top + "px";
 }
 
-// ===== Eventos: el norte con HOVER =====
+// Norte: hover para mostrar/ocultar
 cajaStark.addEventListener("mouseenter", () => mostrarTarjeta(tarjetaHover, cajaStark, casaStark));
 cajaStark.addEventListener("mouseleave", () => tarjetaHover.style.display = "none");
 
@@ -175,14 +162,14 @@ cajaArryn.addEventListener("mouseleave", () => tarjetaHover.style.display = "non
 cajaLannister.addEventListener("mouseenter", () => mostrarTarjeta(tarjetaHover, cajaLannister, casaLannister));
 cajaLannister.addEventListener("mouseleave", () => tarjetaHover.style.display = "none");
 
-// ===== Eventos: el sur con CLICK =====
+// Sur: click para mostrar (persiste hasta click fuera)
 cajaGreyjoy.addEventListener("click", () => mostrarTarjeta(tarjetaClick, cajaGreyjoy, casaGreyjoy));
 cajaTully.addEventListener("click", () => mostrarTarjeta(tarjetaClick, cajaTully, casaTully));
 cajaTyrell.addEventListener("click", () => mostrarTarjeta(tarjetaClick, cajaTyrell, casaTyrell));
 cajaBolton.addEventListener("click", () => mostrarTarjeta(tarjetaClick, cajaBolton, casaBolton));
 cajaMartell.addEventListener("click", () => mostrarTarjeta(tarjetaClick, cajaMartell, casaMartell));
 
-// Cierra la tarjeta de clic al pulsar fuera de una caja o de la propia tarjeta
+// Cierra la tarjeta de click al pulsar fuera
 mapa.addEventListener("click", (e) => {
     if (!e.target.closest(".caja-invisible") && !e.target.closest("#tarjetaClick")) {
         tarjetaClick.style.display = "none";
