@@ -1,0 +1,24 @@
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #8b7d5c 0%, #7a6d4f 30%, #6b5b42 60%, #4d4233 100%);
+}
+
+img {
+    max-width: 100%;
+    max-height: 100vh;
+    height: auto;
+    object-fit: contain;
+}
+
+.tarjeta{
+    width: 340px;
+    height: 420px;
+    padding: 16px;
+    background: linear-gradient(135deg, #e8dcc8 0%, #d4c4a0 50%, #c9b896 100%);
+    border: 2px solid #8b7355;
+    color: #2d1f12;
+}
