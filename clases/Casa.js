@@ -5,7 +5,7 @@ export class Casa {
     #personajes;
     #caracteristicas;
 
-    constructor(region = "", emblema = "", lema = "", personajes = [], caracteristicas = "") {
+    constructor(region = "", emblema = "", lema = "", personajes = "", caracteristicas = "") {
         this.#region = region;
         this.#emblema = emblema;
         this.#lema = lema;

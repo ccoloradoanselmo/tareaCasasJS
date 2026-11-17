@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=MedievalSharp&family=IM+Fell+English+SC&display=swap');
+
 body {
     margin: 0;
     min-height: 100vh;
@@ -5,6 +7,7 @@ body {
     justify-content: center;
     align-items: center;
     background: linear-gradient(135deg, #8b7d5c 0%, #7a6d4f 30%, #6b5b42 60%, #4d4233 100%);
+    font-family: 'IM Fell English SC', serif;
 }
 
 img {
@@ -14,11 +17,214 @@ img {
     object-fit: contain;
 }
 
-.tarjeta{
+.tarjeta {
+    position: absolute;
+    display: none;
+    z-index: 20;
     width: 340px;
-    height: 420px;
+    max-height: 420px;
     padding: 16px;
     background: linear-gradient(135deg, #e8dcc8 0%, #d4c4a0 50%, #c9b896 100%);
     border: 2px solid #8b7355;
     color: #2d1f12;
+    border-radius: 15px;
+    box-shadow:
+        0 1px 1px rgba(0, 0, 0, 0.08),
+        0 2px 2px rgba(0, 0, 0, 0.08),
+        0 4px 4px rgba(0, 0, 0, 0.08),
+        0 8px 8px rgba(0, 0, 0, 0.08),
+        0 16px 16px rgba(0, 0, 0, 0.08);
+    overflow-y: auto;
+}
+
+/* Contenido interno de la tarjeta */
+.tarjeta-contenido {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    height: 100%;
+}
+
+/* Cabecera con logo y región */
+.casa-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #a8987a;
+}
+
+.casa-logo {
+    flex-shrink: 0;
+    width: 70px;
+    height: 70px;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #f5efe6;
+    border: 2px solid #a8987a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.casa-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.casa-region {
+    margin: 0;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #1a130a;
+    line-height: 1.2;
+    font-family: 'MedievalSharp', cursive;
+    letter-spacing: 0.5px;
+}
+
+/* Detalles */
+.casa-detalles {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.casa-detalles p {
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.casa-detalles strong {
+    color: #3d2f1f;
+    font-weight: 600;
+}
+
+.casa-emblema {
+    color: #2d1f12;
+}
+
+.casa-lema {
+    font-style: italic;
+    color: #4a3728;
+    font-size: 0.95rem;
+    padding: 6px 10px;
+    background: rgba(139, 115, 85, 0.15);
+    border-radius: 6px;
+    border-left: 3px solid #8b7355;
+    font-family: 'MedievalSharp', cursive;
+    font-size: 0.9rem;
+}
+
+.casa-personajes {
+    color: #3d2f1f;
+}
+
+.casa-caracteristicas {
+    color: #3d2f1f;
+    padding-top: 4px;
+    border-top: 1px dashed #a8987a;
+}
+
+#tarjetaHover {
+    pointer-events: none;
+}
+
+main {
+    position: relative;
+}
+
+.caja-invisible {
+    width: 50px;
+    height: 50px;
+}
+
+.caja-invisible:hover {
+    cursor: pointer;
+}
+
+/* Arriba centro-derecha: castillo blanco con lobo */
+#cajaStark {
+    position: absolute;
+    top: 71px;
+    left: 394px;
+}
+
+/* Arriba izquierda: castillo negro con dragón rojo */
+#cajaTargaryen {
+    position: absolute;
+    top: 110px;
+    left: 207px;
+}
+
+/* Arriba derecha: castillo negro con ciervo amarillo */
+#cajaBaratheon {
+    position: absolute;
+    top: 169px;
+    left: 480px;
+    z-index: 10;
+}
+
+/* Izquierda arriba: castillo azul con luna */
+#cajaArryn {
+    position: absolute;
+    top: 228px;
+    left: 192px;
+}
+
+/* Centro derecha (arriba): castillo rojo con león */
+#cajaLannister {
+    position: absolute;
+    top: 252px;
+    left: 412px;
+}
+
+/* Centro izquierda: castillo negro con kraken dorado */
+#cajaGreyjoy {
+    position: absolute;
+    top: 425px;
+    left: 168px;
+}
+
+/* Centro: castillo azul con pez plateado */
+#cajaTully {
+    position: absolute;
+    top: 470px;
+    left: 300px;
+}
+
+/* Centro derecha: castillo verde con rosa */
+#cajaTyrell {
+    position: absolute;
+    top: 467px;
+    left: 425px;
+}
+
+/* Centro izquierda (abajo): castillo negro con figura roja */
+#cajaBolton {
+    position: absolute;
+    top: 590px;
+    left: 183px;
+}
+
+/* Abajo centro-derecha: castillo negro con emblema dorado (sobra) */
+#cajaExtra1 {
+    position: absolute;
+    top: 753px;
+    left: 363px;
+}
+
+/* Abajo izquierda: castillo naranja con sol */
+#cajaMartell {
+    position: absolute;
+    top: 832px;
+    left: 192px;
+}
+
+/* Abajo derecha (esquina): castillo morado (sobra) */
+#cajaExtra2 {
+    position: absolute;
+    top: 848px;
+    left: 497px;
 }
